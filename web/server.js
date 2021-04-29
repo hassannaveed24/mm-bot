@@ -7,12 +7,6 @@ const queryParams = Object.entries(params)
   .map(([key, val]) => key + '=' + val)
   .join('&');
 
-const signature = crypto
-  .createHmac('sha256', 'MmM3MWVmZWYtOTcxNS00OWNmLTgxZWYtZjBhOGRjZmZmNjNi')
-  .update('GET/v2/auth/account' + queryParams)
-  .digest('hex');
-
-console.log('hello==========>    ', signature);
 const koa = require('koa');
 const serve = require('koa-static');
 const cors = require('koa-cors');
