@@ -23,11 +23,12 @@ module.exports = function* () {
   exchanges.forEach(function (exchange) {
     let Trader = null;
 
-    try {
-      Trader = require(gekkoRoot + 'exchange/wrappers/' + exchange);
-    } catch (e) {
-      return;
-    }
+    // try {
+    Trader = require(gekkoRoot + 'exchange/wrappers/' + exchange);
+    console.log('Trader============', exchange);
+    // } catch (e) {
+    // return;
+    // }
 
     if (!Trader || !Trader.getCapabilities) {
       return;
