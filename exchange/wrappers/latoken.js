@@ -1,5 +1,5 @@
 const Ccxt = require('ccxt');
-const ccxtError = require('../node_modules/ccxt/js/base/errors.js');
+const ccxtError = require('ccxt/js/base/errors');
 
 const deasync = require('deasync');
 const Errors = require('../exchangeErrors');
@@ -29,7 +29,7 @@ const Trader = function (config) {
     this.currency = config.currency;
     this.asset = config.asset;
   }
-  this.name = 'HuobiPro';
+  this.name = 'LATOKEN';
   this.since = null;
 
   this.balance;
@@ -37,9 +37,9 @@ const Trader = function (config) {
   //this.interval = 3000;
 
   this.pair = [this.asset, this.currency].join('/');
-  var exchange = 'huobipro';
+  var exchange = 'laoken';
 
-  this.ccxt = new Ccxt[exchange]({
+  this.ccxt = new Ccxt.latoken({
     apiKey: this.key,
     secret: this.secret,
     uid: this.username,
@@ -297,6 +297,7 @@ Trader.prototype.getPortfolio = function (callback) {
   var processResult = function (err, data) {
     if (err) return callback(err);
 
+    console.log('data========================>', data);
     var assetAmount = data[this.asset]['free'];
     var currencyAmount = data[this.currency]['free'];
 
@@ -644,7 +645,7 @@ Trader.prototype.cancelOrder = function (order, callback) {
 
 //Dynamic getCapabilities - takes a while
 Trader.getCapabilities = function () {
-  var ccxtSlug = 'huobipro';
+  var ccxtSlug = 'latoken';
   var retFlag = false;
 
   if (_.isUndefined(ccxtSlug)) {
@@ -654,7 +655,7 @@ Trader.getCapabilities = function () {
       exchange = ccxtExchanges[i];
       let Trader = null;
       try {
-        Trader = new Ccxt[exchange]();
+        Trader = new Ccxt.latoken();
       } catch (e) {
         console.log(e);
         return;
@@ -731,11 +732,12 @@ Trader.getCapabilities = function () {
 
     return ret;
   } else {
-    console.log('cccccccccccccccccccccccccc   huobipro');
-
+    console.log('cccccccccccccccccccccccccc   latoken');
     let Trader = null;
     try {
-      Trader = new Ccxt[ccxtSlug]();
+      // Trader = new Ccxt();
+      Trader = new Ccxt.latoken();
+      // Trader = new Ccxt[ccxtSlug]();
     } catch (e) {
       console.log(e);
       return;
@@ -788,7 +790,7 @@ Trader.getCapabilities = function () {
     if (markets !== null) {
       capabilities = {
         name: trader.id,
-        slug: 'huobipro',
+        slug: 'latoken',
         currencies: arrCurrencies.sort(),
         assets: arrAssets.sort(),
         markets: arrPair.sort(function (a, b) {

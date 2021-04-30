@@ -731,7 +731,7 @@ Trader.getCapabilities = function () {
 
     return ret;
   } else {
-    console.log('cccccccccccccccccccccccccc');
+    console.log('cccccccccccccccccccccccccc   okex');
     let Trader = null;
     try {
       // Trader = new Ccxt();

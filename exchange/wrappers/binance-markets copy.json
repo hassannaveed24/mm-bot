@@ -1,0 +1,29 @@
+{
+  "info": [
+    {
+      "currencyId": "92151d82-df98-4d88-9a4d-284fa9eca49f",
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "amount": "0.184998999929900000",
+      "available": "0.184998999929900000",
+      "frozen": "0E-18",
+      "pending": "0"
+    },
+    {
+      "currencyId": "3dda9433-99a8-404b-aa4f-354442d96181",
+      "symbol": "BTOUR",
+      "name": "BTour Chain",
+      "amount": "33862.300000000000000000",
+      "available": "33862.300000000000000000",
+      "frozen": "0E-18",
+      "pending": "0"
+    }
+  ],
+  "timestamp": undefined,
+  "datetime": undefined,
+  "BTC": { "free": 0.1849989999299, "used": 0, "total": 0.1849989999299 },
+  "BTOUR": { "free": 33862.3, "used": 0, "total": 33862.3 },
+  "free": { "BTC": 0.1849989999299, "BTOUR": 33862.3 },
+  "used": { "BTC": 0, "BTOUR": 0 },
+  "total": { "BTC": 0.1849989999299, "BTOUR": 33862.3 }
+}
