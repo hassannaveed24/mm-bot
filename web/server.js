@@ -1,11 +1,35 @@
+const request = require('request');
 const config = require('./vue/dist/UIconfig');
 const crypto = require('crypto');
-const params = {
-  zeros: 'true',
+
+const apiKey = '1fea70d6-76ef-44e4-88f3-9c2c5bc81aed';
+const apiSecret = 'MmM3MWVmZWYtOTcxNS00OWNmLTgxZWYtZjBhOGRjZmZmNjNi';
+const baseUrl = 'https://api.latoken.com';
+const endpoint = '/api/v1/account/balances';
+const params = { timestamp: Date.now() };
+const query =
+  '?' +
+  Object.entries(params)
+    .map(([key, val]) => key + '=' + val)
+    .join('&');
+
+const signature = crypto
+  .createHmac('sha256', apiSecret)
+  .update(endpoint + query)
+  .digest('hex');
+console.log('signature', signature);
+
+const options = {
+  url: baseUrl + endpoint + query,
+  headers: {
+    'X-LA-KEY': apiKey,
+    'X-LA-SIGNATURE': signature,
+  },
 };
-const queryParams = Object.entries(params)
-  .map(([key, val]) => key + '=' + val)
-  .join('&');
+
+request.get(options, function (error, response, body) {
+  console.log('response:', JSON.stringify(body));
+});
 
 const koa = require('koa');
 const serve = require('koa-static');

@@ -37,7 +37,7 @@ const Trader = function (config) {
   //this.interval = 3000;
 
   this.pair = [this.asset, this.currency].join('/');
-  var exchange = 'laoken';
+  var exchange = 'latoken';
 
   this.ccxt = new Ccxt.latoken({
     apiKey: this.key,
