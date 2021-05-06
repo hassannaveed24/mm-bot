@@ -17,7 +17,6 @@ module.exports = function* () {
     .filter((f) => _.last(f, 3).join('') === '.js')
     .map((f) => f.slice(0, -3));
 
-  console.log('Exchanges=============>', exchanges);
   let allCapabilities = [];
 
   exchanges.forEach(function (exchange) {
@@ -25,7 +24,6 @@ module.exports = function* () {
 
     // try {
     Trader = require(gekkoRoot + 'exchange/wrappers/' + exchange);
-    console.log('Trader============', exchange);
     // } catch (e) {
     // return;
     // }

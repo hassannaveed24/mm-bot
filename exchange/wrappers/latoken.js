@@ -45,6 +45,7 @@ const Trader = function (config) {
     uid: this.username,
     password: this.passphrase,
   });
+
   this.exchangeName = exchange;
 
   //Prefetch market
@@ -297,7 +298,6 @@ Trader.prototype.getPortfolio = function (callback) {
   var processResult = function (err, data) {
     if (err) return callback(err);
 
-    console.log('data========================>', data);
     var assetAmount = data[this.asset]['free'];
     var currencyAmount = data[this.currency]['free'];
 
@@ -732,7 +732,6 @@ Trader.getCapabilities = function () {
 
     return ret;
   } else {
-    console.log('cccccccccccccccccccccccccc   latoken');
     let Trader = null;
     try {
       // Trader = new Ccxt();

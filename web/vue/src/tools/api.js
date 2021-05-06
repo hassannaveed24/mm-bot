@@ -1,12 +1,14 @@
 // global window.CONFIG
 
 const config = window.CONFIG.ui;
-const endpoint = `${config.host}${config.port === 80 ? '' : `:${config.port}`}${config.path}`;
+const endpoint = `${config.host}${config.port === 80 ? '' : `:${config.port}`}${
+  config.path
+}`;
 
 let basePath, restPath, wsPath;
 
 // rest API path
-if(config.ssl) {
+if (config.ssl) {
   basePath = `https://${endpoint}`;
 } else {
   basePath = `http://${endpoint}`;
@@ -15,14 +17,10 @@ if(config.ssl) {
 restPath = basePath + 'api/';
 
 // ws API path
-if(config.ssl) {
+if (config.ssl) {
   wsPath = `wss://${endpoint}api`;
 } else {
   wsPath = `ws://${endpoint}api`;
 }
 
-export {
-  wsPath,
-  restPath,
-  basePath
-};
+export { wsPath, restPath, basePath };
